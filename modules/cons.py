@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 #
 #       cons.py
-#       
+#
 #       Copyright 2008-2010 Giuseppe Penone <giuspen@gmail.com>
-#       
+#
 #       This program is free software; you can redistribute it and/or modify
 #       it under the terms of the GNU General Public License as published by
 #       the Free Software Foundation; either version 2 of the License, or
 #       (at your option) any later version.
-#       
+#
 #       This program is distributed in the hope that it will be useful,
 #       but WITHOUT ANY WARRANTY; without even the implied warranty of
 #       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #       GNU General Public License for more details.
-#       
+#
 #       You should have received a copy of the GNU General Public License
 #       along with this program; if not, write to the Free Software
 #       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
@@ -25,11 +25,11 @@ import os
 APP_NAME = "nautilus-pyextensions"
 VERSION = "1.2.1"
 if os.path.isdir('modules'):
-   GLADE_PATH = 'glade/'
-   LOCALE_PATH = 'locale/'
+    GLADE_PATH = 'glade/'
+    LOCALE_PATH = 'locale/'
 else:
-   GLADE_PATH = '/usr/share/nautilus-pyextensions/glade/'
-   LOCALE_PATH = '/usr/share/locale/'
+    GLADE_PATH = '/usr/share/nautilus-pyextensions/glade/'
+    LOCALE_PATH = '/usr/share/locale/'
 PYEXTENSIONS_DIR = os.path.join(os.path.expanduser('~'), '.nautilus/python-extensions')
 PYEXTENSIONS_NOT_ACTIVE_DIR = os.path.join(PYEXTENSIONS_DIR, 'not_active')
 BIN_PATH_1 = "/usr/bin/"
@@ -59,14 +59,14 @@ UI_INFO = """
          <separator/>
          <menuitem action='QuitApp'/>
       </menu>
-      
+
       <menu action='EditMenu'>
          <menuitem action='SelectAll'/>
          <menuitem action='DeselectAll'/>
          <separator/>
          <menuitem action='Edit'/>
       </menu>
-      
+
       <menu action='ViewMenu'>
          <menuitem action='ShowHideToolbar'/>
       </menu>
@@ -95,23 +95,23 @@ UI_INFO = """
 """
 
 def get_entries(inst):
-   """Returns the Menu Entries Given the Class Instance"""
-   return [
-   # name, stock id, label
-   ( "FileMenu", None, _("_File") ),
-   ( "EditMenu", None, _("_Edit") ),
-   ( "ViewMenu", None, _("_View") ),
-   ( "HelpMenu", None, _("_Help") ),
-   # name, stock id, label, accelerator, tooltip, callback
-   ( "Kill", "Restart Nautilus", _("_Kill"), "<control>K", _("Restart Nautilus"), inst.restart_nautilus),
-   ( "Add", "gtk-add", _("_Add"), "<control>N", _("Add A PyExtension"), inst.add_pyextension),
-   ( "Delete", "gtk-clear", _("_Delete"), "Delete", _("Delete The Selected PyExtension"), inst.remove_pyextension),
-   ( "Export", "Export", _("_Export"), "<control>X", _("Export The Selected PyExtension"), inst.export_pyextension),
-   ( "QuitApp", "gtk-quit", _("_Quit"), "<control>Q", _("Quit Nautilus PyExtensions"), inst.quit_application),
-   ( "SelectAll", "Select All", _("Select _All"), "<control>A", _("Activate All PyExtensions"), inst.flag_all_rows),
-   ( "DeselectAll", "Deselect All", _("Deselect A_ll"), "<control><shift>A", _("Deactivate All PyExtensions"), inst.unflag_all_rows),
-   ( "Edit", "gtk-edit", _("_Edit"), "<control>E", _("Edit The Selected PyExtension"), inst.edit_pyextension),
-   ( "ShowHideToolbar", "Toolbar", _("Show/Hide _Toolbar"), None, _("Toggle Show/Hide Toolbar"), inst.show_hide_toolbar),
-   ( "Help", "Help Contents", _("_Help"), None, _("Application's Home Page"), inst.on_help_menu_item_activated),
-   ( "About", "gtk-about", _("_About"), None, _("About Nautilus PyExtensions"), inst.dialog_about),
-   ]
+    """Returns the Menu Entries Given the Class Instance"""
+    return [
+    # name, stock id, label
+    ( "FileMenu", None, _("_File") ),
+    ( "EditMenu", None, _("_Edit") ),
+    ( "ViewMenu", None, _("_View") ),
+    ( "HelpMenu", None, _("_Help") ),
+    # name, stock id, label, accelerator, tooltip, callback
+    ( "Kill", "Restart Nautilus", _("_Kill"), "<control>K", _("Restart Nautilus"), inst.restart_nautilus),
+    ( "Add", "gtk-add", _("_Add"), "<control>N", _("Add A PyExtension"), inst.add_pyextension),
+    ( "Delete", "gtk-clear", _("_Delete"), "Delete", _("Delete The Selected PyExtension"), inst.remove_pyextension),
+    ( "Export", "Export", _("_Export"), "<control>X", _("Export The Selected PyExtension"), inst.export_pyextension),
+    ( "QuitApp", "gtk-quit", _("_Quit"), "<control>Q", _("Quit Nautilus PyExtensions"), inst.quit_application),
+    ( "SelectAll", "Select All", _("Select _All"), "<control>A", _("Activate All PyExtensions"), inst.flag_all_rows),
+    ( "DeselectAll", "Deselect All", _("Deselect A_ll"), "<control><shift>A", _("Deactivate All PyExtensions"), inst.unflag_all_rows),
+    ( "Edit", "gtk-edit", _("_Edit"), "<control>E", _("Edit The Selected PyExtension"), inst.edit_pyextension),
+    ( "ShowHideToolbar", "Toolbar", _("Show/Hide _Toolbar"), None, _("Toggle Show/Hide Toolbar"), inst.show_hide_toolbar),
+    ( "Help", "Help Contents", _("_Help"), None, _("Application's Home Page"), inst.on_help_menu_item_activated),
+    ( "About", "gtk-about", _("_About"), None, _("About Nautilus PyExtensions"), inst.dialog_about),
+    ]
