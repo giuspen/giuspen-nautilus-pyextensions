@@ -1,12 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """This module adds menu items to the Nemo right-click menu which allows to compare
    the selected files/folder using Kdiff3 (Diff and merge tool) just through the right-clicking"""
 
-#   kdiff3-compare.py version 4.2
+#   kdiff3-compare.py version 3.6
 #
-#   Copyright 2009-2019 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2021 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -32,7 +29,7 @@ import locale, gettext
 APP_NAME = "nemo-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
 NAUPYEXT_KDIFF3 = 'NAUPYEXT_KDIFF3'
-ICONPATH = "/usr/share/icons/hicolor/32x32/apps/kdiff3.png"
+ICONPATH = "/usr/share/icons/hicolor/16x16/apps/kdiff3.png"
 # internationalization
 locale.setlocale(locale.LC_ALL, '')
 gettext.bindtextdomain(APP_NAME, LOCALE_PATH)
@@ -65,7 +62,7 @@ class Kdiff3Actions(GObject.GObject, Nemo.MenuProvider):
     def _is_text_document(self, filepath):
         """The given filepath is a text document"""
         filetype = subprocess.Popen("file -i %s" % re.escape(filepath), shell=True, stdout=subprocess.PIPE).communicate()[0]
-        return (b"text" in filetype or b"xml" in filetype)
+        return (b"text" in filetype or b"xml" in filetype or b"csv" in filetype)
 
     def get_file_items(self, window, sel_items):
         """Adds the 'Add To Audacious Playlist' menu item to the Nemo right-click menu,
