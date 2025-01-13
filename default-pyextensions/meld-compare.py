@@ -62,11 +62,11 @@ class MeldActions(GObject.GObject, Caja.MenuProvider):
     def _is_text_document(self, filepath):
         """The given filepath is a text document"""
         filetype = subprocess.Popen("file -i %s" % re.escape(filepath), shell=True, stdout=subprocess.PIPE).communicate()[0]
-        return (b"text" in filetype or b"xml" in filetype or b"csv" in filetype)
+        return (b"text" in filetype or b"xml" in filetype or b"csv" in filetype or b"json" in filetype)
 
     def get_file_items(self, window, sel_items):
-        """Adds the 'Add To Audacious Playlist' menu item to the Caja right-click menu,
-           connects its 'activate' signal to the 'run' method passing the list of selected Audio items"""
+        """Adds the 'Meld Compare' menu item to the Caja right-click menu,
+           connects its 'activate' signal to the 'run' method passing the list of selected file/folder items"""
         num_paths = len(sel_items)
         if num_paths == 0 or num_paths > 2: return
         uri_raw = sel_items[0].get_uri()
